@@ -5,7 +5,7 @@ function toggleDarkMode(){
   document.body.classList.toggle("dark");
 }
 
-/* ================= IMAGE ENLARGE ================= */
+/* ================= IMAGE ZOOM ================= */
 images.forEach(img => {
   img.addEventListener("click", function(){
     img.classList.toggle("zoom");
@@ -28,7 +28,23 @@ function nextSlide(){
   showSlide();
 }
 
-/* show first image initially */
+/* auto slideshow */
+setInterval(nextSlide, 2000);
+
+/* show first image */
 if(images.length > 0){
   showSlide();
+}
+
+/* ================= LIKE FUNCTION ================= */
+function likeImage(img){
+  alert("❤️ Liked: " + img.src.split("/").pop());
+}
+
+/* ================= DOWNLOAD FUNCTION ================= */
+function downloadImage(img){
+  let a = document.createElement("a");
+  a.href = img.src;
+  a.download = img.src.split("/").pop();
+  a.click();
 }
