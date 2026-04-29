@@ -1,50 +1,67 @@
 let images = document.querySelectorAll(".gallery img");
+let selectedImage = null;
 
 /* ================= DARK MODE ================= */
 function toggleDarkMode(){
   document.body.classList.toggle("dark");
 }
 
-/* ================= IMAGE ZOOM ================= */
+/* ================= SELECT IMAGE ================= */
 images.forEach(img => {
   img.addEventListener("click", function(){
-    img.classList.toggle("zoom");
+
+    // remove old selection
+    images.forEach(i => i.classList.remove("selected"));
+
+    // set new selection
+    img.classList.add("selected");
+    selectedImage = img;
+
+    // show in viewer (if you have mainImage)
+    let viewer = document.getElementById("mainImage");
+    if(viewer){
+      viewer.src = img.src;
+    }
   });
 });
 
-/* ================= SLIDESHOW ================= */
-let index = 0;
-
-function showSlide(){
-  images.forEach(img => img.style.display = "none");
-  images[index].style.display = "block";
-}
-
-function nextSlide(){
-  index++;
-  if(index >= images.length){
-    index = 0;
+/* ================= LIKE ================= */
+function likeImage(){
+  if(selectedImage){
+    alert("❤️ Liked: " + selectedImage.src.split("/").pop());
+  } else {
+    alert("Please select an image first!");
   }
-  showSlide();
 }
 
-/* auto slideshow */
-setInterval(nextSlide, 2000);
+/* ================= DOWNLOAD ================= */
+function downloadImage(){
+  if(!selectedImage){
+    alert("Please select an image first!");
+    return;
+  }
 
-/* show first image */
-if(images.length > 0){
-  showSlide();
-}
-
-/* ================= LIKE FUNCTION ================= */
-function likeImage(img){
-  alert("❤️ Liked: " + img.src.split("/").pop());
-}
-
-/* ================= DOWNLOAD FUNCTION ================= */
-function downloadImage(img){
   let a = document.createElement("a");
-  a.href = img.src;
-  a.download = img.src.split("/").pop();
+  a.href = selectedImage.src;
+  a.download = selectedImage.src.split("/").pop();
   a.click();
+}
+
+/* ================= NEXT / PREV (optional) ================= */
+function nextImage(){
+  if(!selectedImage) return;
+
+  let index = Array.from(images).indexOf(selectedImage);
+  index = (index + 1) % images.length;
+
+  images[index].click();
+}
+
+function prevImage(){
+  if(!selectedImage) return;
+
+  let index = Array.from(images).indexOf(selectedImage);
+  index = (index - 1 + images.length) % images.length;
+
+  images[index].click();
 }
