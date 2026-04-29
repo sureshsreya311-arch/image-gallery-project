@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>My Image Gallery</h1>
+<!-- SEARCH BAR -->
+<input type="text" id="search" placeholder="Search images..." onkeyup="searchImages()">
+
+<!-- DARK MODE BUTTON -->
+<button onclick="toggleDarkMode()">🌙 Dark Mode</button>
+
+<!-- SLIDESHOW BUTTON -->
+<button onclick="startSlideshow()">▶ Start Slideshow</button>
+<button onclick="stopSlideshow()">⏹ Stop</button>
+
+
+<!-- FILTER BUTTONS -->
+<div class="buttons">
+  <button onclick="filterSelection('all')" class="active">All</button>
+  <button onclick="filterSelection('nature')">Nature</button>
+  <button onclick="filterSelection('animal')">Animal</button>
+  <button onclick="filterSelection('flower')">Flower</button>
+  <button onclick="filterSelection('space')">Space</button>
+</div>
+
+<!-- IMAGE GALLERY -->
+<div class="gallery">
+
+<!-- 🌿 NATURE -->
+<div class="image-box nature">
+    <img src="images/nature.png">
+    <p>Beautiful Nature</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/nature.png')">⬇ Download</button>
+</div>
+
+<div class="image-box nature">
+    <img src="images/nature2.png">
+    <p>Nature View</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/nature2.png')">⬇ Download</button>
+</div>
+
+<div class="image-box nature">
+    <img src="images/nature4.png">
+    <p>Mountain Nature</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/nature4.png')">⬇ Download</button>
+</div>
+
+<div class="image-box nature">
+    <img src="images/nature5.png">
+    <p>Green Landscape</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/nature5.png')">⬇ Download</button>
+</div>
+
+
+<!-- 🐶 ANIMALS -->
+<div class="image-box animal">
+    <img src="images/animal.png">
+    <p>Cute Animal</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/animal.png')">⬇ Download</button>
+</div>
+
+<div class="image-box animal">
+    <img src="images/animal2.png">
+    <p>Wild Animal</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/animal2.png')">⬇ Download</button>
+</div>
+
+<div class="image-box animal">
+    <img src="images/animal3.png">
+    <p>Forest Animal</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/animal3.png')">⬇ Download</button>
+</div>
+
+
+<!-- 🌸 FLOWERS -->
+<div class="image-box flower">
+    <img src="images/flower.png">
+    <p>Lovely Flower</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/flower.png')">⬇ Download</button>
+</div>
+
+<div class="image-box flower">
+    <img src="images/flower2.png">
+    <p>Fresh Flower</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/flower2.png')">⬇ Download</button>
+</div>
+
+<div class="image-box flower">
+    <img src="images/flower3.png">
+    <p>Blooming Flower</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/flower3.png')">⬇ Download</button>
+</div>
+
+
+<!-- 🌌 SPACE -->
+<div class="image-box space">
+    <img src="images/space.png">
+    <p>Outer Space</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/space.png')">⬇ Download</button>
+</div>
+
+<div class="image-box space">
+    <img src="images/space2.png">
+    <p>Galaxy</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/space2.png')">⬇ Download</button>
+</div>
+
+<div class="image-box space">
+    <img src="images/space3.png">
+    <p>Stars View</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/space3.png')">⬇ Download</button>
+</div>
+
+<div class="image-box space">
+    <img src="images/space5.png">
+    <p>Universe</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/space5.png')">⬇ Download</button>
+</div>
+
+<div class="image-box animal">
+    <img src="images/animal.png">
+    <p>Cute Animal</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/animal.png')">⬇ Download</button>
+</div>
+
+<div class="image-box flower">
+    <img src="images/flower.png">
+    <p>Lovely Flower</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/flower.png')">⬇ Download</button>
+</div>
+
+<div class="image-box space">
+    <img src="images/space.png">
+    <p>Outer Space</p>
+    <button onclick="likeImage(this)">❤️ Like</button>
+    <button onclick="downloadImage('images/space.png')">⬇ Download</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- FULL SCREEN VIEW -->
+<div id="fullscreen" onclick="closeFullscreen()">
+    <img id="fullImg">
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
