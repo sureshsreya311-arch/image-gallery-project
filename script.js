@@ -17,11 +17,8 @@ images.forEach(img => {
     img.classList.add("selected");
     selectedImage = img;
 
-    // show in viewer (if you have mainImage)
-    let viewer = document.getElementById("mainImage");
-    if(viewer){
-      viewer.src = img.src;
-    }
+    // show in viewer
+    document.getElementById("mainImage").src = img.src;
   });
 });
 
@@ -30,14 +27,14 @@ function likeImage(){
   if(selectedImage){
     alert("❤️ Liked: " + selectedImage.src.split("/").pop());
   } else {
-    alert("Please select an image first!");
+    alert("Select an image first!");
   }
 }
 
 /* ================= DOWNLOAD ================= */
 function downloadImage(){
   if(!selectedImage){
-    alert("Please select an image first!");
+    alert("Select an image first!");
     return;
   }
 
@@ -47,9 +44,13 @@ function downloadImage(){
   a.click();
 }
 
-/* ================= NEXT / PREV (optional) ================= */
+/* ================= NEXT ================= */
 function nextImage(){
-  if(!selectedImage) return;
+  let images = document.querySelectorAll(".gallery img");
+
+  if(!selectedImage){
+    selectedImage = images[0];
+  }
 
   let index = Array.from(images).indexOf(selectedImage);
   index = (index + 1) % images.length;
@@ -57,8 +58,13 @@ function nextImage(){
   images[index].click();
 }
 
+/* ================= PREV ================= */
 function prevImage(){
-  if(!selectedImage) return;
+  let images = document.querySelectorAll(".gallery img");
+
+  if(!selectedImage){
+    selectedImage = images[0];
+  }
 
   let index = Array.from(images).indexOf(selectedImage);
   index = (index - 1 + images.length) % images.length;
